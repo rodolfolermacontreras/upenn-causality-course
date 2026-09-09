@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>One-Pager: Incident User & Active Comparator Designs</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card-bg: #1e293b;
+      --border: #334155;
+      --text: #f8fafc;
+      --muted: #94a3b8;
+      --accent: #38bdf8;
+      --accent-green: #4ade80;
+      --accent-amber: #facc15;
+      --accent-red: #f87171;
+      --code-bg: #0b1120;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+      padding: 24px;
+    }
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 12px;
+    }
+    header h1 {
+      font-size: 1.75rem;
+      color: var(--accent);
+      margin-bottom: 4px;
+    }
+    header p {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    @media (max-width: 768px) {
+      .grid { grid-template-columns: 1fr; }
+    }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px;
+    }
+    .card h2 {
+      font-size: 1.1rem;
+      color: var(--accent);
+      margin-bottom: 10px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 6px;
+    }
+    .badge {
+      display: inline-block;
+      background: rgba(56, 189, 248, 0.15);
+      color: var(--accent);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+    ul {
+      margin-left: 18px;
+      color: #cbd5e1;
+    }
+    li {
+      margin-bottom: 6px;
+    }
+    .pill {
+      font-weight: 600;
+      color: var(--accent-amber);
+    }
+    .success-card {
+      border-left: 4px solid var(--accent-green);
+    }
+    .warn-card {
+      border-left: 4px solid var(--accent-amber);
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 8px;
+      font-size: 0.9rem;
+    }
+    th, td {
+      border: 1px solid var(--border);
+      padding: 8px 12px;
+      text-align: left;
+    }
+    th {
+      background: var(--code-bg);
+      color: var(--accent);
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <h1>Incident User & Active Comparator Designs</h1>
+    <p>Module 1: Principles of Observational Study Design and Target Trial Emulation</p>
+  </header>
+
+  <div class="card warn-card">
+    <h2>Why Cross-Sectional Snapshots Fail</h2>
+    <p>Comparing people currently on a treatment to people not on it introduces severe biases:</p>
+    <ul>
+      <li><strong>Prevalent User Bias:</strong> You only observe survivors who tolerated the drug and stayed on it. You miss early dropouts and adverse events.</li>
+      <li><strong>Confounding by Indication:</strong> People on treatment differ systematically in severity and health-seeking habits compared to untreated people.</li>
+    </ul>
+  </div>
+
+  <div class="grid">
+    <div class="card">
+      <span class="badge">DESIGN 1</span>
+      <h2>Incident User Design</h2>
+      <p>Restrict study subjects strictly to <strong>new initiators</strong> of the treatment.</p>
+      <ul>
+        <li><span class="pill">Washout Period:</span> Require a baseline window (e.g., 6-12 months) with zero treatment use before start.</li>
+        <li><span class="pill">Synchronized Time Zero (T0):</span> Align everyone's follow-up clock to the exact day of initiation.</li>
+        <li><span class="pill">Pre-Treatment Covariates:</span> Measure confounders strictly before T0 so they are not affected by treatment.</li>
+        <li><span class="pill">What it fixes:</span> Eliminates depletion of susceptibles, immortal time bias, and drop-out selection bias.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <span class="badge">DESIGN 2</span>
+      <h2>Active Comparator Design</h2>
+      <p>Compare treatment of interest against an <strong>alternative active therapy</strong> for the same indication.</p>
+      <ul>
+        <li><span class="pill">Same Indication:</span> Both groups crossed the clinical threshold where a doctor decided treatment was needed.</li>
+        <li><span class="pill">Similar Behaviors:</span> Both groups seek healthcare, fill prescriptions, and adhere to medical regimens.</li>
+        <li><span class="pill">Stronger Positivity:</span> Eliminates extreme propensity scores because patients could reasonably receive either active drug.</li>
+        <li><span class="pill">Example:</span> Yoga vs Zumba for hypertension, rather than Yoga vs sitting on the couch.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card success-card">
+    <h2>The Combined Standard: New-User Active-Comparator Design</h2>
+    <p>Combining both methods creates a study design that closely emulates a pragmatic randomized trial:</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Design Feature</th>
+          <th>Naive Observational Study</th>
+          <th>New-User Active-Comparator</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Cohort Selection</strong></td>
+          <td>Any current user at survey time (prevalent users)</td>
+          <td>Only new starters after a clear washout period</td>
+        </tr>
+        <tr>
+          <td><strong>Control Group</strong></td>
+          <td>No treatment or placebo (unmeasured confounding)</td>
+          <td>Active drug or exercise with matching indication</td>
+        </tr>
+        <tr>
+          <td><strong>Time Zero (T0)</strong></td>
+          <td>Ambiguous, arbitrary calendar date</td>
+          <td>Exact date of treatment initiation</td>
+        </tr>
+        <tr>
+          <td><strong>Covariate Timing</strong></td>
+          <td>Often measured while already on treatment</td>
+          <td>Measured strictly before initiation</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</body>
+</html>

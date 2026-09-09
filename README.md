@@ -102,7 +102,7 @@ upenn-causality/
 
 | Module | Topic | Status | Notes |
 |---|---|---|---|
-| 1 | Intro to causal effects | Not started | |
+| 1 | Intro to causal effects | In progress | Covered potential outcomes, assumptions, standardization, study designs |
 | 2 | Confounding and DAGs | Not started | |
 | 3 | Matching and propensity scores | Not started | |
 | 4 | IPTW | Not started | |
